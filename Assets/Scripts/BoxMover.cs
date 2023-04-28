@@ -15,7 +15,9 @@ public class BoxMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("walk speed is " + speed);
-        Debug.Log("strafe speed is " + strafe_speed);
+        float controlled_walk_speed = Input.GetAxis("Horizontal") * speed;
+        float controlled_strafe_speed = Input.GetAxis("Vertical") * strafe_speed;
+
+        GetComponent<Rigidbody>().AddForce(controlled_walk_speed, 0, controlled_strafe_speed);
     }
 }
